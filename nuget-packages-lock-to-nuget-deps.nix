@@ -1,4 +1,5 @@
-{ lib, nixpkgs, callPackage, zip }:
+{ lib, callPackage, zip }:
+{ nixpkgs }:
 let
   fetchNupkg = callPackage "${nixpkgs}/pkgs/build-support/dotnet/fetch-nupkg" {
     nugetPackageHook = callPackage "${nixpkgs}/pkgs/development/compilers/dotnet/nuget-package-hook.nix" {};

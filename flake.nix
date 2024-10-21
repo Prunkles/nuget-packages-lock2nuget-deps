@@ -5,9 +5,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { ... }: {
+  outputs = { nixpkgs, ... }: {
     lib = {
-      nugetPackagesLockToNugetDeps = import ./nuget-packages-lock-to-nuget-deps.nix;
+      nugetPackagesLockToNugetDeps =
+        nixpkgs.lib.trivial.mirrorFunctionArgs
+          (import ./nuget-packages-lock-to-nuget-deps.nix)
+          (attrs:
+            (import ./nuget-packages-lock-to-nuget-deps.nix) attrs { inherit nixpkgs; }
+          );
     };
   };
 }
