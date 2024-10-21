@@ -1,5 +1,5 @@
 {
-  description = "nuget-packages-lock2nix";
+  description = "nuget-packages-lock2nuget-deps";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
